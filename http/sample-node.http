@@ -1,0 +1,17 @@
+### 노드 생성
+POST http://localhost:8080/nodes
+Content-Type: application/json
+
+{
+  "id": 123,
+  "name": "aiden4"
+}
+
+### 노드 전체 조회
+GET http://localhost:8080/nodes
+
+### 노드 상세 조회
+GET http://localhost:8080/nodes/123
+
+### 노드 제거
+DELETE http://localhost:8080/nodes/123
