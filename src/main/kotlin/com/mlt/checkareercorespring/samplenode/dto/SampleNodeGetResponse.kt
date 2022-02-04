@@ -4,7 +4,8 @@ import com.mlt.checkareercorespring.samplenode.domain.SampleNode
 
 data class SampleNodeGetResponse(
     val id: Long,
-    val name: String
+    val name: String,
+    val endNodes: Set<SampleNode>
 ) {
     companion object {
         fun listOf(sampleNodes: List<SampleNode>): List<SampleNodeGetResponse> {
@@ -12,7 +13,7 @@ data class SampleNodeGetResponse(
         }
 
         fun of(sampleNode: SampleNode): SampleNodeGetResponse {
-            return SampleNodeGetResponse(sampleNode.id, sampleNode.name)
+            return SampleNodeGetResponse(sampleNode.id, sampleNode.name, sampleNode.endNodes)
         }
     }
 }
