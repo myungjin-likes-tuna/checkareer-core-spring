@@ -13,8 +13,8 @@ class PersonController(
     private val personService: PersonService
 ) {
 
-    @GetMapping("/execute-query")
+    @GetMapping("/execute-custom-query")
     fun executeQuery(): ResponseEntity<List<PersonNameGetResponse>> {
-        return ResponseEntity.ok(PersonNameGetResponse.listOf(personService.executeQuery()))
+        return ResponseEntity.ok(PersonNameGetResponse.listOf(personService.executeCustomQuery()))
     }
 }

@@ -11,5 +11,5 @@ interface PersonRepository : Neo4jRepository<Person, Long> {
                 "RETURN gds.util.asNode(node1).name AS Person1\n" +
                 "ORDER BY similarity DESCENDING"
     )
-    fun executeQueryExample(): List<Any>
+    fun executeCustomQuery(): List<Any>
 }

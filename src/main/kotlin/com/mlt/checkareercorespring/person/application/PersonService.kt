@@ -10,7 +10,7 @@ class PersonService(
     private val personRepository: PersonRepository
 ) {
 
-    fun executeQuery(): List<Any> {
-        return personRepository.executeQueryExample()
+    fun executeCustomQuery(): List<Any> {
+        return personRepository.executeCustomQuery()
     }
 }
