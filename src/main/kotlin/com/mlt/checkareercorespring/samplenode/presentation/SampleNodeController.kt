@@ -15,6 +15,10 @@ import org.springframework.web.bind.annotation.*
 class SampleNodeController(
     private val sampleNodeService: SampleNodeService
 ) {
+    @GetMapping("/health")
+    fun healthCheck(): ResponseEntity<String> {
+        return ResponseEntity.ok("I'm healthy")
+    }
 
     @PostMapping("/nodes", consumes = [MediaType.APPLICATION_JSON_VALUE])
     fun createNode(@RequestBody sampleNodeSaveRequest: SampleNodeSaveRequest): ResponseEntity<Void> {
