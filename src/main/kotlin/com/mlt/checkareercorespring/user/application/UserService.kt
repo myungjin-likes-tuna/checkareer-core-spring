@@ -10,7 +10,7 @@ class UserService(
     private val userRepository: UserRepository
 ) {
 
-    fun findUserBySkillGraphOrderBySimilarity(): List<Any> {
+    fun getUsersWithSimilarSkills(): List<Any> {
         return userRepository.findUserBySkillGraphOrderBySimilarity()
     }
 }
