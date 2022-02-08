@@ -1,0 +1,2 @@
+### 유사 스킬 유저 목록 조회
+GET http://localhost:8080/users-similar-skills
