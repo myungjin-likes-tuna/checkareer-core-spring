@@ -14,7 +14,7 @@ class UserController(
 ) {
 
     @GetMapping("/users-similar-skills")
-    fun executeQuery(): ResponseEntity<List<UserNameGetResponse>> {
-        return ResponseEntity.ok(UserNameGetResponse.listOf(userService.findUserBySkillGraphOrderBySimilarity()))
+    fun getUsersWithSimilarSkills(): ResponseEntity<List<UserNameGetResponse>> {
+        return ResponseEntity.ok(UserNameGetResponse.listOf(userService.getUsersWithSimilarSkills()))
     }
 }
