@@ -4,8 +4,8 @@ data class UserNameGetResponse(
     val name: String
 ) {
     companion object {
-        fun listOf(users: List<Any>): List<UserNameGetResponse> {
-            return users.map { of(it.toString()) }.toList()
+        fun listOf(userNames: List<String>): List<UserNameGetResponse> {
+            return userNames.map { of(it) }.toList()
         }
 
         private fun of(name: String): UserNameGetResponse {
