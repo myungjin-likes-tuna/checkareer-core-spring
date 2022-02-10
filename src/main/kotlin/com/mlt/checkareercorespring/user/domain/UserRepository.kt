@@ -11,5 +11,5 @@ interface UserRepository : Neo4jRepository<User, Long> {
                 "RETURN gds.util.asNode(node1).name AS User\n" +
                 "ORDER BY similarity DESCENDING"
     )
-    fun findUserBySkillGraphOrderBySimilarity(): List<Any>
+    fun findUserNameBySkillGraphOrderBySimilarity(): List<String>
 }
