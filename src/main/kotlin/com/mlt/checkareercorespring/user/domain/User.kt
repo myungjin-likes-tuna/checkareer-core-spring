@@ -12,6 +12,6 @@ class User(
     val id: Long,
     val name: String,
 
-    @Relationship(type = "likes", direction = Relationship.Direction.OUTGOING)
-    val skills: List<Skill> = Collections.emptyList()
+    @Relationship(type = "LIKES", direction = Relationship.Direction.OUTGOING)
+    var skills: List<Skill> = Collections.emptyList()
 )

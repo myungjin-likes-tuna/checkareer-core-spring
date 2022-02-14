@@ -7,6 +7,12 @@ import org.springframework.data.neo4j.repository.query.Query
 
 interface UserRepository : Neo4jRepository<User, Long> {
 
+    @Query(
+        "MATCH (u: User {id: \$userId})-[r:LIKES]->()\n" +
+                "DELETE r"
+    )
+    fun deleteSkillRelationship(userId: Long)
+
     // TODO: 정렬 기준 파라미터로 넘기기, 쿼리 결과를 Map이 아닌 Object에 매핑하기(당장 기능에는 영향 없음)
     @Query(
         "CALL gds.nodeSimilarity.stream('userSkillGraph')\n" +
@@ -20,4 +26,5 @@ interface UserRepository : Neo4jRepository<User, Long> {
         sortOrder: SortOrder,
         limit: Int?
     ): List<MapValue>
+
 }

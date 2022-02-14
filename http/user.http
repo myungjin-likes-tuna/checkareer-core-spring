@@ -1,16 +1,28 @@
-### 유저 정보 추가(이미 있는 유저라면 갱신)
+### 유저 정보 추가
 POST http://localhost:8080/users
 Content-Type: application/json
 
 {
-  "id": 10,
+  "userId": 10,
   "name": "10인근",
-  "skills": [
+  "skillIds": [
     1,
     3,
     5,
     7,
     9
+  ]
+}
+
+### 유저 스킬 정보 갱신
+PUT http://localhost:8080/users/skills
+Content-Type: application/json
+
+{
+  "userId": 10,
+  "skillIds": [
+    2,
+    4
   ]
 }
 
