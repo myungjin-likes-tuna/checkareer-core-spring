@@ -3,8 +3,7 @@ package com.mlt.checkareercorespring.user.dto
 import org.neo4j.driver.internal.value.MapValue
 
 data class UserSkillSimilarityGetResponse(
-    var user1: String,
-    var user2: String,
+    var user: UserGetResponse,
     var similarity: Double
 ) {
     companion object {
@@ -14,8 +13,7 @@ data class UserSkillSimilarityGetResponse(
 
         private fun of(userSkillSimilarity: MapValue): UserSkillSimilarityGetResponse {
             return UserSkillSimilarityGetResponse(
-                userSkillSimilarity["user1"].asString(),
-                userSkillSimilarity["user2"].asString(),
+                UserGetResponse(userSkillSimilarity["user"]["id"].asLong(), userSkillSimilarity["user"]["name"].asString()),
                 userSkillSimilarity["similarity"].asDouble()
             )
         }
