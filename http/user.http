@@ -15,14 +15,12 @@ Content-Type: application/json
 }
 
 ### 유저 스킬 정보 갱신
-PUT http://localhost:8080/users/skills
+PUT http://localhost:8080/users/10/skills
 Content-Type: application/json
 
 {
-  "userId": 10,
   "skillIds": [
-    2,
-    4
+    1
   ]
 }
 

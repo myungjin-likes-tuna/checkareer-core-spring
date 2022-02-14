@@ -29,9 +29,9 @@ class UserService(
     }
 
     @Transactional
-    fun updateUserSkills(userSkillUpdateRequest: UserSkillUpdateRequest) {
-        val user = userRepository.findById(userSkillUpdateRequest.userId).orElseThrow {
-            throw IllegalArgumentException("존재하지 않는 유저입니다. (userId: ${userSkillUpdateRequest.userId})")
+    fun updateUserSkills(userId: Long, userSkillUpdateRequest: UserSkillUpdateRequest) {
+        val user = userRepository.findById(userId).orElseThrow {
+            throw IllegalArgumentException("존재하지 않는 유저입니다. (userId: ${userId})")
         }
         userRepository.deleteSkillRelationship(user.id)
 
