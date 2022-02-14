@@ -20,11 +20,11 @@ class UserService(
 
     @Transactional
     fun createUser(userSaveRequest: UserSaveRequest) {
-        userRepository.findById(userSaveRequest.userId)
-            .ifPresent { throw IllegalArgumentException("이미 존재하는 유저입니다. (userId: ${userSaveRequest.userId})") }
+        userRepository.findById(userSaveRequest.id)
+            .ifPresent { throw IllegalArgumentException("이미 존재하는 유저입니다. (userId: ${userSaveRequest.id})") }
 
         val skills = skillRepository.findAllById(userSaveRequest.skillIds)
-        val user = User(userSaveRequest.userId, userSaveRequest.name, skills)
+        val user = User(userSaveRequest.id, userSaveRequest.name, skills)
         userRepository.save(user)
     }
 
