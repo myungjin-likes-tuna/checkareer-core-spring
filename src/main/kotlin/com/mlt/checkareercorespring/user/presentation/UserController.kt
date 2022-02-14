@@ -29,9 +29,12 @@ class UserController(
         return ResponseEntity(HttpStatus.OK)
     }
 
-    @PutMapping("/users/skills", consumes = [MediaType.APPLICATION_JSON_VALUE])
-    fun updateUserSkills(@RequestBody userSkillUpdateRequest: UserSkillUpdateRequest): ResponseEntity<Void> {
-        userService.updateUserSkills(userSkillUpdateRequest)
+    @PutMapping("/users/{userId}/skills", consumes = [MediaType.APPLICATION_JSON_VALUE])
+    fun updateUserSkills(
+        @PathVariable("userId") userId: Long,
+        @RequestBody userSkillUpdateRequest: UserSkillUpdateRequest
+    ): ResponseEntity<Void> {
+        userService.updateUserSkills(userId, userSkillUpdateRequest)
         return ResponseEntity(HttpStatus.OK)
     }
 
