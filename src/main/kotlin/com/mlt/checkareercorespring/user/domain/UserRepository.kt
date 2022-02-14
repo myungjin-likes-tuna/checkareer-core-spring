@@ -26,5 +26,4 @@ interface UserRepository : Neo4jRepository<User, Long> {
         sortOrder: SortOrder,
         limit: Int?
     ): List<MapValue>
-
 }
