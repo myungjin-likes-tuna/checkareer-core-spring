@@ -42,7 +42,7 @@ class UserService(
 
     @Transactional(readOnly = true)
     fun getUserSkillSimilarity(userId: Long, paging: Paging): List<MapValue> {
-        return userRepository.findUserSkillSimilarityBySkillGraphOrderBySimilarityDesc(
+        return userRepository.findUserSkillSimilarityBySkillGraphOrderBySkillSimilarityDesc(
             userId,
             paging.sortOrder,
             paging.limit

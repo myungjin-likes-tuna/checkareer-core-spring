@@ -18,10 +18,10 @@ interface UserRepository : Neo4jRepository<User, Long> {
         "CALL gds.nodeSimilarity.stream('userSkillGraph')\n" +
                 "YIELD node1, node2, similarity\n" +
                 "WHERE gds.util.asNode(node1).id = \$userId\n" +
-                "RETURN { user: { id: gds.util.asNode(node2).id, name:gds.util.asNode(node2).name }, similarity: similarity }\n" +
+                "RETURN { user: { id: gds.util.asNode(node2).id, name:gds.util.asNode(node2).name }, skillSimilarity: similarity }\n" +
                 "ORDER BY similarity DESC LIMIT \$limit"
     )
-    fun findUserSkillSimilarityBySkillGraphOrderBySimilarityDesc(
+    fun findUserSkillSimilarityBySkillGraphOrderBySkillSimilarityDesc(
         userId: Long,
         sortOrder: SortOrder,
         limit: Int?
