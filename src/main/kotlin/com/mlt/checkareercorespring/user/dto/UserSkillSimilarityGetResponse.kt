@@ -4,7 +4,7 @@ import org.neo4j.driver.internal.value.MapValue
 
 data class UserSkillSimilarityGetResponse(
     var user: UserGetResponse,
-    var similarity: Double
+    var skillSimilarity: Double
 ) {
     companion object {
         fun listOf(userSkillSimilarities: List<MapValue>): List<UserSkillSimilarityGetResponse> {
@@ -14,7 +14,7 @@ data class UserSkillSimilarityGetResponse(
         private fun of(userSkillSimilarity: MapValue): UserSkillSimilarityGetResponse {
             return UserSkillSimilarityGetResponse(
                 UserGetResponse(userSkillSimilarity["user"]["id"].asLong(), userSkillSimilarity["user"]["name"].asString()),
-                userSkillSimilarity["similarity"].asDouble()
+                userSkillSimilarity["skillSimilarity"].asDouble()
             )
         }
     }
