@@ -26,4 +26,29 @@ interface UserRepository : Neo4jRepository<User, Long> {
         sortOrder: SortOrder,
         limit: Int?
     ): List<MapValue>
+
+    @Query("CALL gds.graph.drop('userSkillGraph')")
+    fun dropUserSkillGraph(): MapValue
+
+    @Query(
+        "CALL gds.graph.create(\n" +
+                "    'userSkillGraph',\n" +
+                "    ['User', 'Skill'],\n" +
+                "    {\n" +
+                "        LIKES: {\n" +
+                "            type: 'LIKES',\n" +
+                "            properties: {\n" +
+                "                strength: {\n" +
+                "                    property: 'strength',\n" +
+                "                    defaultValue: 1.0\n" +
+                "                }\n" +
+                "            }\n" +
+                "        }\n" +
+                "    }\n" +
+                ");"
+    )
+    fun createUserSkillGraph()
+
+    @Query("CALL gds.graph.exists('userSkillGraph') YIELD exists")
+    fun isExistUserSkillGraph(): Boolean
 }
