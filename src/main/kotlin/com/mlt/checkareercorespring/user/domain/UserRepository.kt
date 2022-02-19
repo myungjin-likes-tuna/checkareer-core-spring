@@ -27,8 +27,8 @@ interface UserRepository : Neo4jRepository<User, Long> {
         limit: Int?
     ): List<MapValue>
 
-    @Query("CALL gds.graph.drop('userSkillGraph')")
-    fun dropUserSkillGraph(): MapValue
+    @Query("CALL gds.graph.exists('userSkillGraph') YIELD exists")
+    fun isExistUserSkillGraph(): Boolean
 
     @Query(
         "CALL gds.graph.create(\n" +
@@ -49,6 +49,6 @@ interface UserRepository : Neo4jRepository<User, Long> {
     )
     fun createUserSkillGraph()
 
-    @Query("CALL gds.graph.exists('userSkillGraph') YIELD exists")
-    fun isExistUserSkillGraph(): Boolean
+    @Query("CALL gds.graph.drop('userSkillGraph')")
+    fun dropUserSkillGraph()
 }
