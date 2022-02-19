@@ -26,6 +26,8 @@ class UserService(
         val skills = skillRepository.findAllById(userSaveRequest.skillIds)
         val user = User(userSaveRequest.id, userSaveRequest.name, skills)
         userRepository.save(user)
+
+        dropAndCreateUserSkillGraph()
     }
 
     @Transactional
@@ -38,6 +40,35 @@ class UserService(
         val newSkills = skillRepository.findAllById(userSkillUpdateRequest.skillIds)
         user.skills = newSkills
         userRepository.save(user)
+        dropAndCreateUserSkillGraph()
+    }
+
+    private fun dropAndCreateUserSkillGraph() {
+        val isExistUserSkillGraph = userRepository.isExistUserSkillGraph()
+
+        if (isExistUserSkillGraph) {
+            dropUserSkillGraph()
+        }
+
+        createUserSkillGraph()
+    }
+
+    private fun dropUserSkillGraph() {
+        try {
+            userRepository.dropUserSkillGraph()
+        } catch (e: Exception) {
+//            println("drop 완료")
+            // dropUserSkillGraph() 리턴 결과를 매핑 안해줘서 exception 생기므로 예외처리
+        }
+    }
+
+    private fun createUserSkillGraph() {
+        try {
+            userRepository.createUserSkillGraph()
+        } catch (e: Exception) {
+//            println("create 완료")
+            // dropUserSkillGraph() 리턴 결과를 매핑 안해줘서 exception 생기므로 예외처리
+        }
     }
 
     @Transactional(readOnly = true)
