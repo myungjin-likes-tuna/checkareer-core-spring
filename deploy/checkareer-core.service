@@ -1,0 +1,14 @@
+[Unit]
+Description=Checkareer API Server
+After=network.target
+
+[Service]
+ExecStart=/bin/bash -c "exec java -jar -Dspring.config.location=/var/www/checkareer-core/config/application-db.properties /var/www/checkareer-core/current"
+WorkingDirectory=/var/www/checkareer-core
+Restart=always
+
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target
