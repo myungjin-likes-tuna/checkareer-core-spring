@@ -1,28 +1,31 @@
 ### 유저 정보 추가
-POST http://localhost:8080/users
+POST {{host}}/users
 Content-Type: application/json
 
 {
-  "id": 10,
-  "name": "10인근",
+  "id": 1,
+  "name": "유인근",
   "skillIds": [
-    1,
+    2,
     3,
-    5,
-    7,
-    9
+    5
   ]
 }
 
 ### 유저 스킬 정보 갱신
-PUT http://localhost:8080/users/10/skills
+PUT {{host}}/users/1/skills
 Content-Type: application/json
 
 {
   "skillIds": [
-    1
+    2,
+    3,
+    4,
+    5,
+    7,
+    20
   ]
 }
 
 ### 특정 유저와 유사한 스킬을 가진 유저 목록 조회
-GET http://localhost:8080/users/1/skill-similarity?limit=10
+GET {{host}}/users/1/skill-similarity?limit=10
