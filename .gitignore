@@ -38,6 +38,7 @@ out/
 
 ### Database ###
 application-db.properties
+deploy/neo4j/
 
 ### ETC ###
 nohup.out
