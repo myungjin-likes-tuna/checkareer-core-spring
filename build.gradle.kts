@@ -35,7 +35,6 @@ subprojects {
         "implementation"("com.fasterxml.jackson.module:jackson-module-kotlin")
         "implementation"("org.jetbrains.kotlin:kotlin-reflect")
         "implementation"("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-        "implementation"("org.springframework.boot:spring-boot-starter-data-neo4j")
         "compileOnly"("org.projectlombok:lombok")
         "annotationProcessor"("org.projectlombok:lombok")
         "testImplementation"("org.springframework.boot:spring-boot-starter-test")
@@ -63,6 +62,7 @@ project(":domain") {
     }
 
     dependencies {
+        "implementation"("org.springframework.boot:spring-boot-starter-data-neo4j")
     }
 }
 
