@@ -2,10 +2,12 @@ package com.mlt.checkareercorespring.domain.user.model.dto
 
 import org.neo4j.driver.internal.value.MapValue
 
+// data class: DTO
 data class UserSkillSimilarityGetResponse(
     var user: UserGetResponse,
     var skillSimilarity: Double
 ) {
+    // 정적 영역
     companion object {
         fun listOf(userSkillSimilarities: List<MapValue>): List<UserSkillSimilarityGetResponse> {
             return userSkillSimilarities.map { of(it) }.toList()
