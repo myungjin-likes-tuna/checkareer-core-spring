@@ -6,25 +6,32 @@ import com.mlt.checkareercorespring.domain.user.model.dto.UserSaveRequest
 import com.mlt.checkareercorespring.domain.user.model.dto.UserSkillUpdateRequest
 import com.mlt.checkareercorespring.domain.user.model.entity.User
 import com.mlt.checkareercorespring.domain.user.repository.UserRepository
-import lombok.RequiredArgsConstructor
+import lombok.AllArgsConstructor
+import lombok.NoArgsConstructor
+import lombok.RequiredArgsConstructor       // lombok: spring 기능들 간단하게 사용하는 라이브러리
 import org.neo4j.driver.internal.value.MapValue
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
 @Service
-@RequiredArgsConstructor
+
+@AllArgsConstructor
+@RequiredArgsConstructor        //
+@NoArgsConstructor
 class UserService(
     private val userRepository: UserRepository,
     private val skillRepository: SkillRepository
 ) {
 
-    @Transactional
+    // 내부에서 트랜잭션 function 을 호출하면 트랜잭션 반영되지 않음
+    @Transactional      // 작업의 완전성 보장
     fun createUser(userSaveRequest: UserSaveRequest) {
         userRepository.findById(userSaveRequest.id)
             .ifPresent { throw IllegalArgumentException("이미 존재하는 유저입니다. (userId: ${userSaveRequest.id})") }
 
         val skills = skillRepository.findAllById(userSaveRequest.skillIds)
         val user = User(userSaveRequest.id, userSaveRequest.name, skills)
+
         userRepository.save(user)
 
         dropAndCreateUserSkillGraph()
