@@ -1,5 +1,6 @@
 package com.mlt.checkareercorespring.controller
 
+import com.mlt.checkareercorespring.annotation.CheckPermission
 import com.mlt.checkareercorespring.domain.common.model.Paging
 import com.mlt.checkareercorespring.domain.user.model.dto.UserSaveRequest
 import com.mlt.checkareercorespring.domain.user.model.dto.UserSkillSimilarityGetResponse
@@ -23,12 +24,14 @@ class UserController(
     private val userService: UserService
 ) {
 
+    @CheckPermission
     @PostMapping("/users", consumes = [MediaType.APPLICATION_JSON_VALUE])
     fun createUser(@RequestBody userSaveRequest: UserSaveRequest): ResponseEntity<Void> {
         userService.createUser(userSaveRequest)
         return ResponseEntity(HttpStatus.OK)
     }
 
+    @CheckPermission
     @PutMapping("/users/{userId}/skills", consumes = [MediaType.APPLICATION_JSON_VALUE])
     fun updateUserSkills(
         @PathVariable("userId") userId: Long,
