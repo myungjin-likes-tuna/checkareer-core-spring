@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServletRequest
 class GoogleOAuthInteractor : AuthInteractor {
 
     override fun authenticate(request: HttpServletRequest) {
-        // TODO: request header의 access token 검증 기능 추가
-        println(request)
+        val cookies = request.cookies
+        val accessToken = cookies.first { it.name == "ACCESS_TOKEN" }.value
+
+        println(accessToken)
     }
 }
