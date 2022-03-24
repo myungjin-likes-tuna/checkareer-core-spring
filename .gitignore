@@ -42,3 +42,6 @@ deploy/neo4j/
 
 ### ETC ###
 nohup.out
+
+### env, config ###
+checkareerFirebaseKey.json
