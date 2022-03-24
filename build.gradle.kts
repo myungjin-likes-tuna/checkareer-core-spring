@@ -77,6 +77,8 @@ project(":infra") {
 
     dependencies {
         "implementation"(project(":domain"))
+
+        "implementation"("com.google.firebase:firebase-admin:8.1.0")
     }
 }
 
