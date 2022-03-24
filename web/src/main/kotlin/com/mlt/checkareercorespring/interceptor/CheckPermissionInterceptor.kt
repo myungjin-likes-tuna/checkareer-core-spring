@@ -12,7 +12,12 @@ class CheckPermissionInterceptor(
 ) : HandlerInterceptor {
 
     override fun preHandle(request: HttpServletRequest, response: HttpServletResponse, handler: Any): Boolean {
-        authInteractor.authenticate(request)
+        try {
+            authInteractor.authenticate(request)
+        } catch (e: Exception) {
+            println(e.message)
+            response.sendError(403, "접근할 수 없는 사용자 입니다.")
+        }
         return true
     }
 }

@@ -9,12 +9,7 @@ import javax.servlet.http.HttpServletRequest
 class FirebaseInteractor : AuthInteractor {
 
     override fun authenticate(request: HttpServletRequest) {
-        val cookies = request.cookies
-        val accessToken = cookies.first { it.name == "ACCESS_TOKEN" }.value
-
-        val decodedToken = FirebaseAuth.getInstance().verifyIdToken(accessToken)
-        val uid = decodedToken.name
-
-        println(uid)
+        val accessToken = request.getHeader("Authorization").replace("Bearer ", "")
+        FirebaseAuth.getInstance().verifyIdToken(accessToken)
     }
 }

@@ -12,14 +12,17 @@ class FirebaseConfig {
 
     @PostConstruct
     fun init() {
-        val serviceAccount =
-            FileInputStream("/Users/kakao/Desktop/develop/checkareer-core-spring/infra/src/main/resources/checkareerFirebaseKey.json")
+        try {
+            val serviceAccount = FileInputStream("./infra/src/main/resources/checkareerFirebaseKey.json")
 
-        val options: FirebaseOptions = FirebaseOptions.Builder()
-            .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-            .setDatabaseUrl("https://careery-97ac6-default-rtdb.firebaseio.com")
-            .build()
+            val options: FirebaseOptions = FirebaseOptions.Builder()
+                .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+                .setDatabaseUrl("https://careery-97ac6-default-rtdb.firebaseio.com")
+                .build()
 
-        FirebaseApp.initializeApp(options)
+            FirebaseApp.initializeApp(options)
+        } catch (e: Exception) {
+            println(e.message)
+        }
     }
 }
