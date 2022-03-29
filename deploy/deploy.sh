@@ -6,7 +6,7 @@ PID_PATH=$REPOSITORY_DIR/PID
 
 echo "change directory"
 
-cd $REPOSITORY_DIR/$APP_NAME
+cd $REPOSITORY_DIR/$APP_NAME/web
 
 echo "git pull"
 
@@ -14,7 +14,7 @@ git pull
 
 echo "app build"
 
-./gradlew clean build
+../gradlew clean build
 
 echo "copy executable jar file"
 
