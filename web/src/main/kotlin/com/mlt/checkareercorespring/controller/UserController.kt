@@ -38,6 +38,7 @@ class UserController(
         @RequestBody userSkillUpdateRequest: UserSkillUpdateRequest
     ): ResponseEntity<Void> {
         userService.updateUserSkills(userId, userSkillUpdateRequest)
+
         return ResponseEntity(HttpStatus.OK)
     }
 
