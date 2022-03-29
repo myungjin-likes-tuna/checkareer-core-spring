@@ -34,7 +34,7 @@ class UserController(
     @CheckPermission
     @PutMapping("/users/{userId}/skills", consumes = [MediaType.APPLICATION_JSON_VALUE])
     fun updateUserSkills(
-        @PathVariable("userId") userId: Long,
+        @PathVariable("userId") userId: String,
         @RequestBody userSkillUpdateRequest: UserSkillUpdateRequest
     ): ResponseEntity<Void> {
         userService.updateUserSkills(userId, userSkillUpdateRequest)
@@ -43,7 +43,7 @@ class UserController(
 
     @GetMapping("/users/{userId}/skill-similarity", produces = [MediaType.APPLICATION_JSON_VALUE])
     fun getUserSkillSimilarity(
-        @PathVariable("userId") userId: Long,
+        @PathVariable("userId") userId: String,
         paging: Paging
     ): ResponseEntity<List<UserSkillSimilarityGetResponse>> {
         return ResponseEntity.ok(
