@@ -6,13 +6,13 @@ import org.neo4j.driver.internal.value.MapValue
 import org.springframework.data.neo4j.repository.Neo4jRepository
 import org.springframework.data.neo4j.repository.query.Query
 
-interface UserRepository : Neo4jRepository<User, Long> {
+interface UserRepository : Neo4jRepository<User, String> {
 
     @Query(
         "MATCH (u: User {id: \$userId})-[r:LIKES]->()\n" +
                 "DELETE r"
     )
-    fun deleteSkillRelationship(userId: Long)
+    fun deleteSkillRelationship(userId: String)
 
     // TODO: 정렬 기준 파라미터로 넘기기, 쿼리 결과를 Map이 아닌 Object에 매핑하기(당장 기능에는 영향 없음)
     @Query(
@@ -23,7 +23,7 @@ interface UserRepository : Neo4jRepository<User, Long> {
                 "ORDER BY similarity DESC LIMIT \$limit"
     )
     fun findUserSkillSimilarityBySkillGraphOrderBySkillSimilarityDesc(
-        userId: Long,
+        userId: String,
         sortOrder: Paging.SortOrder,
         limit: Int?
     ): List<MapValue>

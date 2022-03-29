@@ -38,7 +38,7 @@ class UserService(
     }
 
     @Transactional
-    fun updateUserSkills(userId: Long, userSkillUpdateRequest: UserSkillUpdateRequest) {
+    fun updateUserSkills(userId: String, userSkillUpdateRequest: UserSkillUpdateRequest) {
         val user = userRepository.findById(userId).orElseThrow {
             throw IllegalArgumentException("존재하지 않는 유저입니다. (userId: ${userId})")
         }
@@ -79,7 +79,7 @@ class UserService(
     }
 
     @Transactional(readOnly = true)
-    fun getUserSkillSimilarity(userId: Long, paging: Paging): List<MapValue> {
+    fun getUserSkillSimilarity(userId: String, paging: Paging): List<MapValue> {
         return userRepository.findUserSkillSimilarityBySkillGraphOrderBySkillSimilarityDesc(
             userId,
             paging.sortOrder,

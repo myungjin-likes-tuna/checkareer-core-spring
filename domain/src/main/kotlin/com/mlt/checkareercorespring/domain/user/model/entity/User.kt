@@ -10,7 +10,7 @@ import java.util.*
 @Node("User")
 class User(
     @Id
-    val id: Long,
+    val id: String,
     val name: String,
 
     // direction: 방향을 정함

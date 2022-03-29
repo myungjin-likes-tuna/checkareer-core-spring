@@ -16,7 +16,7 @@ data class UserSkillSimilarityGetResponse(
         // TODO: 해당 key 를 가진 노드가 없으면 제외시키기
         private fun of(userSkillSimilarity: MapValue): UserSkillSimilarityGetResponse {
             return UserSkillSimilarityGetResponse(
-                UserGetResponse(userSkillSimilarity["user"]["id"].asLong(), userSkillSimilarity["user"]["name"].asString()),
+                UserGetResponse(userSkillSimilarity["user"]["id"].toString(), userSkillSimilarity["user"]["name"].asString()),
                 userSkillSimilarity["skillSimilarity"].asDouble()
             )
         }
