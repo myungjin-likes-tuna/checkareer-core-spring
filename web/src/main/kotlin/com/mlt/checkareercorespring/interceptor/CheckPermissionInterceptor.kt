@@ -17,6 +17,7 @@ class CheckPermissionInterceptor(
         } catch (e: Exception) {
             println(e.message)
             response.sendError(403, "접근할 수 없는 사용자 입니다.")
+            return false
         }
         return true
     }
