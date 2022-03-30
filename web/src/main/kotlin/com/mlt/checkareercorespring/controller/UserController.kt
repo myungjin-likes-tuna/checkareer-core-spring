@@ -42,6 +42,7 @@ class UserController(
         return ResponseEntity(HttpStatus.OK)
     }
 
+    @CheckPermission
     @GetMapping("/users/{userId}/skill-similarity", produces = [MediaType.APPLICATION_JSON_VALUE])
     fun getUserSkillSimilarity(
         @PathVariable("userId") userId: String,
