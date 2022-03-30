@@ -13,7 +13,7 @@ class FirebaseConfig {
     @PostConstruct
     fun init() {
         try {
-            val serviceAccount = FileInputStream("./infra/src/main/resources/checkareerFirebaseKey.json")
+            val serviceAccount = FileInputStream("/home/ec2-user/app/checkareer-core-spring/infra/src/main/resources/checkareerFirebaseKey.json")
 
             val options: FirebaseOptions = FirebaseOptions.Builder()
                 .setCredentials(GoogleCredentials.fromStream(serviceAccount))
